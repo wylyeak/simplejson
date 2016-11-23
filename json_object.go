@@ -143,6 +143,14 @@ func (this *JSONObject) AsString() (string, error) {
 	return string(jsonString), err
 }
 
+func (this *JSONObject) Keys() ([]string) {
+	var result []string
+	for key := range this.innerMap {
+		result = append(result, key)
+	}
+	return result
+}
+
 func (this *JSONObject) MustUnmarshal(v interface{}) {
 	str, err := this.AsString()
 	if err != nil {

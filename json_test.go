@@ -220,6 +220,10 @@ func TestJSONArrayAllTypes(t *testing.T) {
 	if (jsonValue.String("keyString") != "stringValue") {
 		t.Error("keyJSONObject didn't include the string strin")
 	}
+	keys := jsonObject.Keys()
+	if len(keys) != 7 {
+		t.Errorf("keys:%v", keys)
+	}
 }
 
 func TestParsingStringToJSONArray(t *testing.T) {
