@@ -151,6 +151,10 @@ func (this *JSONObject) Keys() ([]string) {
 	return result
 }
 
+func (this *JSONObject) ToMap() map[string]interface{} {
+	return this.innerMap
+}
+
 func (this *JSONObject) MustUnmarshal(v interface{}) {
 	str, err := this.AsString()
 	if err != nil {
