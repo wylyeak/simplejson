@@ -88,6 +88,10 @@ func (this *JSONObject) Int(key string) int {
 	return parseInt(this.innerMap[key])
 }
 
+func (this *JSONObject) Int64(key string) int64 {
+	return parseInt64(this.innerMap[key])
+}
+
 func (this *JSONObject) OptInt(key string) (int, bool) {
 	obj, ok := this.innerMap[key]
 	if !ok {

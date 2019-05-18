@@ -23,6 +23,22 @@ func parseInt(rawValue interface{}) int {
 	}
 }
 
+func parseInt64(rawValue interface{}) int64 {
+	switch t := rawValue.(type) {
+	default:
+		panic(fmt.Sprintf("interface{} could not be converted to int. Value was: %d", rawValue))
+	case float64:
+		if intValue := math.Trunc(t); intValue != rawValue {
+			panic(fmt.Sprintf("float64 could not be converted to int. Value was: %d", rawValue))
+		}else {
+			return int64(intValue)
+		}
+	case int64:
+		return t
+
+	}
+}
+
 // casts interface to a json-compatible format and returns the resulting value as interface
 func interfaceToJsonCompatible(aInterface interface{}) (interface{}, bool) {
 	//TODO research for better solution (e.g. direct encoding for every possible type as Marshal is doing
