@@ -94,10 +94,20 @@ func (this *JSONObject) Int64(key string) int64 {
 
 func (this *JSONObject) OptInt(key string) (int, bool) {
 	obj, ok := this.innerMap[key]
-	if !ok {
+	if !ok || obj == nil {
 		return 0, ok
 	} else {
 		return parseInt(obj), true
+	}
+
+}
+
+func (this *JSONObject) OptInt64(key string) (int64, bool) {
+	obj, ok := this.innerMap[key]
+	if !ok || obj == nil {
+		return 0, ok
+	} else {
+		return parseInt64(obj), true
 	}
 
 }
